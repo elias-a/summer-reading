@@ -1,0 +1,4 @@
+node_modules
+dist
+*.realm*
+src/models/data.js
