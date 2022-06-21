@@ -4,12 +4,13 @@
   "description": "",
   "scripts": {
     "start": "vite",
-    "dev": "vite",
-    "build": "export $(cat .env) && vite build --base=$BASE_URL && mv dist ../server/build",
+    "dev": "export $(cat .env) && vite",
+    "build": "export $(cat .env) && vite build --base=$VITE_BASE && mv dist ../server/build",
     "serve": "vite preview"
   },
   "license": "MIT",
   "devDependencies": {
+    "@types/node": "^18.0.0",
     "vite": "^2.9.9",
     "vite-plugin-solid": "^2.2.6"
   },

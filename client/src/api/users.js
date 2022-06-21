@@ -3,7 +3,7 @@ import axios from 'axios';
 export const authenticate = async (password) => {
   const response = await axios({
     method: 'POST',
-    url: 'http://127.0.0.1:20001/api/authenticate',
+    url: `${process.env.BASE_URL}api/authenticate`,
     data: {
       password: password,
     },

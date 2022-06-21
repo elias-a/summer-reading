@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getBooks = async () => {
   const response = await axios({
     method: 'GET',
-    url: 'http://127.0.0.1:20001/api/get-books',
+    url: `${process.env.BASE_URL}api/get-books`,
     headers: {
       sessionid: sessionStorage.getItem('sessionid'),
     },
@@ -14,7 +14,7 @@ export const getBooks = async () => {
 export const updateIsCompleted = async (params) => {
   await axios({
     method: 'POST',
-    url: 'http://127.0.0.1:20001/api/update-is-completed',
+    url: `${process.env.BASE_URL}api/update-is-completed`,
     data: params,
     headers: {
       sessionid: sessionStorage.getItem('sessionid'),

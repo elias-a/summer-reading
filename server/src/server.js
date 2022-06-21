@@ -35,7 +35,8 @@ app.use((req, res, next) => {
 app.use(express.static('build'));
 
 app.post('/api/authenticate', async (req, res) => {
-  if (req.headers.sessionid && validateSession(req.headers.sessionid)) {
+  const isSessionValid = await validateSession(req.headers.sessionid);
+  if (isSessionValid) {
     getUser(req.headers.sessionid).then(user => {
       res.json({ user });
       return;
@@ -57,8 +58,9 @@ app.post('/api/authenticate', async (req, res) => {
   }
 });
 
-app.get('/api/get-books', (req, res) => {
-  if (!validateSession(req.headers.sessionid)) {
+app.get('/api/get-books', async (req, res) => {
+  const isSessionValid = await validateSession(req.headers.sessionid);
+  if (!isSessionValid) {
     res.json(null);
     return;
   }
@@ -108,10 +110,11 @@ app.get('/api/get-books', (req, res) => {
   });
 });
 
-app.post('/api/update-is-completed', (req, res) => {
+app.post('/api/update-is-completed', async (req, res) => {
   const { id, isCompleted } = req.body;
 
-  if (!validateSession(req.headers.sessionid)) {
+  const isSessionValid = await validateSession(req.headers.sessionid);
+  if (!isSessionValid) {
     res.json(null);
     return;
   }
