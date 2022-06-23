@@ -22,6 +22,12 @@
   display: flex;
 }
 
+.form {
+  min-width: 100%;
+  max-width: 100%;
+  display: flex;
+}
+
 .labelSection {
   display: flex;
   flex: 1;
@@ -49,7 +55,7 @@
   max-width: 55%;
 }
 
-.input {
+input {
   font-size: 22px;
 }
 
@@ -58,5 +64,44 @@
   flex: 3;
   justify-items: center;
   align-items: center;
+}
+
+.submitButton {
   cursor: pointer;
+}
+
+.error {
+  border: 2px solid #e30022;
+  border-radius: 7px;
+}
+
+.error:focus {
+  outline: none !important;
+  border: 2px solid #e30022;
+}
+
+.errorMessage {
+  color: #e30022;
+  position: absolute;
+  bottom: -5px;
+}
+
+.loader {
+  border: 3px solid #000;
+  border-radius: 50%;
+  border-top: 3px solid #fff;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 0.8s linear infinite;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
 }
