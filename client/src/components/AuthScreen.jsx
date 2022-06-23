@@ -19,7 +19,7 @@ const AuthScreen = (props) => {
     setIsSubmitting(true);
     authenticate(password()).then(user => {
       if (user) {
-        props.setUser(user);
+        props.setSession(user.session);
       } else {
         setError(true);
       }

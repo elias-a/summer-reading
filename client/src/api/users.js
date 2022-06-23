@@ -19,3 +19,16 @@ export const authenticate = async (password) => {
     return null;
   }
 };
+
+export const getUser = async () => {
+  const response = await axios({
+    method: 'GET',
+    url: `${process.env.BASE_URL}api/get-user`,
+    headers: {
+      sessionid: sessionStorage.getItem('sessionid') ?? '',
+
+    }
+  });
+
+  return response.data.user;
+};

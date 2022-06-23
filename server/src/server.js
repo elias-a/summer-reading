@@ -58,6 +58,13 @@ app.post('/api/authenticate', async (req, res) => {
   }
 });
 
+app.get('/api/get-user', async (req, res) => {
+  getUser(req.headers.sessionid).then(user => {
+    res.json({ user });
+    return;
+  });
+});
+
 app.get('/api/get-books', async (req, res) => {
   const isSessionValid = await validateSession(req.headers.sessionid);
   if (!isSessionValid) {
